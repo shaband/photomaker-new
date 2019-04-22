@@ -1,11 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var User = require('@models/User');
-var UserController = require('@controllers/UserController');
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', User);
-});
-router.get('/users/index', UserController.index)
-
+var adminRoutes = require('@routes/admin/index')
+var websiteRoutes = require('@routes/website/index')
+router.use('/admin', adminRoutes);
+router.use('/', websiteRoutes);
 module.exports = router;

@@ -16,6 +16,7 @@
     "express": "~4.16.0",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
     "http-errors": "~1.6.2",
     "method-override": "^3.0.0",
     "module-alias": "^2.2.0",
@@ -31,6 +32,5 @@
     "@models": "./app/Models",
     "@config": "./config",
     "@routes": "./routes"
-
   }
 }

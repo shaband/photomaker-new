@@ -1,0 +1,24 @@
+<%- contentFor('content') %>
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">اضافه العضو </h3>
+            </div>
+            <!-- form start -->
+            <form method="post" action="/admin/users?_method=post">
+                <input type="hidden" name="_method" value="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <!-- /.box-body -->
+                <%-include('./_form.ejs')%>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">حفظ</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
