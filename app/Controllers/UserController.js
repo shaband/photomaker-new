@@ -22,11 +22,16 @@ class UserController {
     }
     store(req, res) {
 
-        const err = body('name').isEmail()
-        //const errors = validationResult(req);
-        //  res.send(errors)
-        console.log(err)
-        res.send(req.body);
+        // console.log(req);
+        const errors = validationResult(req);
+        //TODO:: handle error validation
+        let user = new User(req.body).save();
+
+        user.then(newUser => {
+            res.redirect('/admin/users');
+        })
+        user.catch(err => res.send(err));
+
     }
     edit(req, res) {
 

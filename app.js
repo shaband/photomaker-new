@@ -6,9 +6,9 @@ var path = require('path');
 var logger = require('morgan');
 var indexRouter = require('@routes/index');
 var expressLayouts = require('express-ejs-layouts');
-
 var app = express();
 require('./config/database');
+ 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

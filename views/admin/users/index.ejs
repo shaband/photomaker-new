@@ -13,19 +13,18 @@
                         <tr >
                             <th> #</th>
                             <th>الاسم</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>البريد الالكترونى</th>
+                            <th>الاعدادت</th>
                         </tr>
                     </thead>
                     <tbody>
-                <% for (user of users) {%>
+                <% for(var i=0;i< users.length ;i++) {%>
                         <tr>
-                            <td><%=user.title%></td>
-                            <td><%=user.body%>
+                        <td><%= i+1 %></td>
+                            <td><%=users[i].name%></td>
+                            <td><%=users[i].email%>
                             </td>
-                            <td>Win 95+</td>
-                            <td> 4</td>
+
                             <td>X</td>
                         </tr>
               <% } %>

@@ -7,6 +7,8 @@
             "@models/*": ["./app/Models/*"],
             "@config/*": ["./config/*"],
             "@routes/*": ["./routes/*"],
+            "@validator/*": ["./app/validations/*"]
+
         }
     }
 }
