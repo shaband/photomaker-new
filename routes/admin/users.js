@@ -3,7 +3,8 @@ const router = express.Router();
 const UserController = require('@controllers/UserController')
 const {
     createUserValidation
-} = require('@validator/userValidation')
+} = require('@validator/userValidation');
+
 router.get('/users', UserController.index);
 router.get('/users/create', UserController.create);
 router.post('/users', createUserValidation,UserController.store);

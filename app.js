@@ -16,6 +16,7 @@ app.use(expressLayouts);
 app.set("layout extractScripts", true)
 app.set('layout extractStyles', true)
 app.set('layout', 'admin/layouts/layout');
+app.locals.error = app.locals.error || null;
 
 app.use(logger('dev'));
 app.use(express.json());
