@@ -9,8 +9,8 @@
                 <h3 class="box-title">تعديل العضو <%= user.name %> </h3>
             </div>
             <!-- form start -->
-            <form method="post" action="/admin/users/<%= user.id %>/edit?_method=put">
-                <input type="hidden" name="_method" value="put">
+            <form method="post" action="/admin/users/<%= user.id %>?_method=PUT">
+                <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <!-- /.box-body -->
                 <%-include('./_form.ejs')%>

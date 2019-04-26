@@ -8,7 +8,7 @@ var indexRouter = require('@routes/index');
 var expressLayouts = require('express-ejs-layouts');
 var app = express();
 require('./config/database');
- 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -23,6 +23,7 @@ app.use(express.urlencoded({
   extended: false
 }));
 require('./config/session')(app);
+require('./config/override')(app);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,7 +42,9 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    layout: false
+  });
 });
 
 module.exports = app;

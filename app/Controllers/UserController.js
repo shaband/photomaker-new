@@ -5,6 +5,9 @@ const {
     validationResult
 } = require('express-validator/check');
 
+
+
+
 class UserController {
 
     index(req, res) {
@@ -35,19 +38,44 @@ class UserController {
     }
     edit(req, res) {
 
-        res.render('admin/users/create')
+        let user = User.findById(req.params.id)
+        return user.then(user => {
+            return res.render('admin/users/edit', {
+                user
+            })
+        }).catch(err => res.send(err));
 
     }
     update(req, res) {
+        //  delete req.body.password;
+        console.log(req.body.password.trim())
+        if (req.body.password.trim() == null || req.body.password.trim() == "") {
+            delete req.body.password;
+            delete req.body.confirmPassword;
+        }
 
-        res.render('admin/users/create')
+        let user = User.findByIdAndUpdate(req.params.id, req.body)
+        return user.then(user => {
+            return res.redirect('/admin/users')
+        }).catch(err => res.send(err))
+
+
+        //   res.render('admin/users/create')
 
     }
     destroy(req, res) {
 
+        let user = User.findByIdAndRemove(req.params.id)
+
+        return user.then(user => {
+            return res.redirect('/admin/users')
+        }).catch(err => res.send(err))
+
         res.render('admin/users/create')
 
     }
+
+
 
 }
 module.exports = new UserController

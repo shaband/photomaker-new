@@ -20,6 +20,13 @@ createUserValidation = [
     min: 6
   }).custom(confirmPassowrd)
 ]
+updateUserValidation = [
+  check('name').exists().isString().isLength({
+    min: 1
+  }),
+  check('email').exists().isEmail(),
+  check('password').custom(confirmPassowrd)
+]
 
 module.exports = {
   createUserValidation

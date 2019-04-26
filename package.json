@@ -29,10 +29,12 @@
   },
   "_moduleAliases": {
     "@root": ".",
+    "@app":"./app",
     "@controllers": "./app/Controllers",
     "@models": "./app/Models",
     "@config": "./config",
     "@routes": "./routes",
-    "@validator": "./app/validations"
+    "@validator": "./app/validations",
+    "@middlware": "./app/middleware"
   }
 }
