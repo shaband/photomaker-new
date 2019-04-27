@@ -12,10 +12,13 @@ class UserController {
 
     index(req, res) {
         const users = User.find()
-        users.then(users => res.render('admin/users/index', {
-            users: users,
+        users.then(users => {
 
-        }));
+
+            res.render('admin/users/index', {
+                users: users,
+            })
+        });
         users.catch(err => res.send(err));
     }
     create(req, res) {
@@ -26,11 +29,13 @@ class UserController {
     store(req, res) {
 
         // console.log(req);
-        const errors = validationResult(req);
-        //TODO:: handle error validation
+    
         let user = new User(req.body).save();
 
         user.then(newUser => {
+
+            req.flash('success', 'تم الاضافه بنجاح');
+
             res.redirect('/admin/users');
         })
         user.catch(err => res.send(err));
@@ -40,6 +45,7 @@ class UserController {
 
         let user = User.findById(req.params.id)
         return user.then(user => {
+
             return res.render('admin/users/edit', {
                 user
             })
@@ -56,6 +62,9 @@ class UserController {
 
         let user = User.findByIdAndUpdate(req.params.id, req.body)
         return user.then(user => {
+
+            req.flash('success', 'تم التعديل بنجاح')
+
             return res.redirect('/admin/users')
         }).catch(err => res.send(err))
 
@@ -68,10 +77,10 @@ class UserController {
         let user = User.findByIdAndRemove(req.params.id)
 
         return user.then(user => {
+            req.flash('success', 'تم الحذف بنجاح')
             return res.redirect('/admin/users')
         }).catch(err => res.send(err))
 
-        res.render('admin/users/create')
 
     }
 

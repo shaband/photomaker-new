@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node  -r dotenv/config ./bin/www",
-    "watch": "nodemon  -r dotenv/config ./bin/www"
+    "watch": "nodemon  -r dotenv/config ./bin/www",
+    "debug": "nodemon -r dotenv/config --inspect ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
@@ -14,8 +15,10 @@
     "debug": "~2.6.9",
     "dotenv": "^7.0.0",
     "ejs": "~2.5.7",
+    "ejs-lint": "^0.3.0",
     "express": "~4.16.0",
     "express-ejs-layouts": "^2.5.0",
+    "express-flash": "0.0.2",
     "express-session": "^1.16.1",
     "express-validator": "^5.3.1",
     "http-errors": "~1.6.2",
@@ -29,7 +32,7 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@app":"./app",
+    "@app": "./app",
     "@controllers": "./app/Controllers",
     "@models": "./app/Models",
     "@config": "./config",

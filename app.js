@@ -1,12 +1,15 @@
 require('module-alias/register')
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var indexRouter = require('@routes/index');
-var expressLayouts = require('express-ejs-layouts');
-var app = express();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const indexRouter = require('@routes/index');
+const expressLayouts = require('express-ejs-layouts');
+const passport = require('passport');
+const app = express();
+const ejsLint = require('ejs-lint');
+
 require('./config/database');
 
 // view engine setup
@@ -25,6 +28,12 @@ app.use(express.urlencoded({
 }));
 require('./config/session')(app);
 require('./config/override')(app);
+//require('./app/helpers/ejs-helpers')(app);
+
+
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 

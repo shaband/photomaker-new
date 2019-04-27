@@ -29,6 +29,7 @@ updateUserValidation = [
 ]
 
 module.exports = {
-  createUserValidation
+  createUserValidation,
+  updateUserValidation
 
 }
