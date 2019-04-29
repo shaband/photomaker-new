@@ -3,7 +3,7 @@ const {
 } = require('express-validator/check');
 
 
-function validation(req, res, next) {
+exports.validation= (req, res, next)=> {
 
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors_array = validationResult(req);
@@ -21,6 +21,3 @@ function validation(req, res, next) {
     next()
 
 }
-module.exports = {
-    validation
-};

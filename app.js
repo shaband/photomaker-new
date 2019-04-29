@@ -9,6 +9,7 @@ const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const app = express();
 const ejsLint = require('ejs-lint');
+const bodyParser = require("body-parser");
 
 require('./config/database');
 
@@ -28,11 +29,12 @@ app.use(express.urlencoded({
 }));
 require('./config/session')(app);
 require('./config/override')(app);
-//require('./app/helpers/ejs-helpers')(app);
-
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session());
 
 
 app.use(express.static(path.join(__dirname, 'public')));

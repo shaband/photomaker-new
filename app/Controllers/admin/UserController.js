@@ -1,16 +1,9 @@
-const User = require('../Models/User');
-const {
-    check,
-    body,
-    validationResult
-} = require('express-validator/check');
-
-
-
+const User = require('@models/User');
 
 class UserController {
 
     index(req, res) {
+   //     console.log(req);
         const users = User.find()
         users.then(users => {
 
@@ -29,7 +22,7 @@ class UserController {
     store(req, res) {
 
         // console.log(req);
-    
+
         let user = new User(req.body).save();
 
         user.then(newUser => {
