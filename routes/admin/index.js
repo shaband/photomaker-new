@@ -17,8 +17,8 @@ router.post('/login', isGuest, passport.authenticate('admin', {
     failureFlash: true
 }), authController.login);
 
-router.use('/', isAuth, UserRoutes);
+router.use('/', /* isAuth, */ UserRoutes);
 
 router.get('/', isAuth, HomeController.index);
-
+router.get('/logout', isAuth, authController.logout);
 module.exports = router

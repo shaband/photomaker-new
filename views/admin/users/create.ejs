@@ -9,7 +9,7 @@
                 <h3 class="box-title">اضافه العضو </h3>
             </div>
             <!-- form start -->
-            <form method="post" action="/admin/users?_method=post">
+            <form method="post" action="/admin/users?_method=post" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="post">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <!-- /.box-body -->

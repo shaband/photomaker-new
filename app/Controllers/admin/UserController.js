@@ -1,9 +1,9 @@
 const User = require('@models/User');
-
+const bcrypt = require('bcrypt');
 class UserController {
 
     index(req, res) {
-   //     console.log(req);
+        //     console.log(req);
         const users = User.find()
         users.then(users => {
 
@@ -47,11 +47,16 @@ class UserController {
     }
     update(req, res) {
         //  delete req.body.password;
-        console.log(req.body.password.trim())
         if (req.body.password.trim() == null || req.body.password.trim() == "") {
             delete req.body.password;
             delete req.body.confirmPassword;
+        } else {
+            let hashed_password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+            req.body.password = hashed_password;
         }
+
+
+
 
         let user = User.findByIdAndUpdate(req.params.id, req.body)
         return user.then(user => {
