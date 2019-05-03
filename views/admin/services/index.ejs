@@ -1,0 +1,44 @@
+<%- contentFor('content') %>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <div class="box-header">
+                <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th> #</th>
+                            <th>الاسم</th>
+                            <th>البريد الالكترونى</th>
+                            <th>الاعدادت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0;i< users.length ;i++) {%>
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%=users[i].name%></td>
+                            <td>
+                                <%=users[i].email%>
+                            </td>
+                            <td>
+                                <a href="/admin/users/<%= users[i].id %>/edit" class="btn btn-warning"> edit</a>
+                                <form action="/admin/users/<%= users[i].id %>?_method=delete " method="post">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="btn btn-danger"> delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,25 +1,24 @@
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('express-flash');
-
-var csurf = require('csurf')
-var csrfProtection = csurf({
+const csurf = require('csurf')
+const csrfProtection = csurf({
     cookie: true
 })
 const session_object = {
-    secret: process.env.SESSION_SECRET || "1234567",
-    resave: process.env.SESSION_RESAVE || true,
-    saveUninitialized: process.env.SESSION_SAVEUNINITIALIZED || false,
+    secret: process.env.SESSION_SECRET,
+    resave: process.env.SESSION_RESAVE,
+    saveUninitialized: process.env.SESSION_SAVEUNINITIALIZED,
     cookie: {
         secure: false
     }
 }
 
-
 function passCsrf(req, res, next) {
     res.locals.csrfToken = req.csrfToken();
     next();
 };
+
 function globalVariables(req, res, next) {
     res.locals.url = req.get('host');
     next();

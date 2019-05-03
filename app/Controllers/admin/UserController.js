@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 class UserController {
 
     index(req, res) {
+
         //     console.log(req);
         const users = User.find()
         users.then(users => {
@@ -20,25 +21,18 @@ class UserController {
 
     }
     store(req, res) {
-
-        // console.log(req);
-
         let user = new User(req.body).save();
-
-        user.then(newUser => {
+        return user.then(newUser => {
 
             req.flash('success', 'تم الاضافه بنجاح');
 
             res.redirect('/admin/users');
-        })
-        user.catch(err => res.send(err));
-
+        }).catch(err => res.send(err))
     }
     edit(req, res) {
 
         let user = User.findById(req.params.id)
         return user.then(user => {
-
             return res.render('admin/users/edit', {
                 user
             })
@@ -51,7 +45,7 @@ class UserController {
             delete req.body.password;
             delete req.body.confirmPassword;
         } else {
-            let hashed_password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+            let hashed_password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
             req.body.password = hashed_password;
         }
 
@@ -67,7 +61,6 @@ class UserController {
         }).catch(err => res.send(err))
 
 
-        //   res.render('admin/users/create')
 
     }
     destroy(req, res) {

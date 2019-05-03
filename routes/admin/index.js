@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const UserRoutes = require('@routes/admin/users');
+const UserRoutes = require('@root/routes/admin/routes/users');
 const {
     isAuth,
     isGuest
@@ -17,7 +17,7 @@ router.post('/login', isGuest, passport.authenticate('admin', {
     failureFlash: true
 }), authController.login);
 
-router.use('/', /* isAuth, */ UserRoutes);
+router.use('/', isAuth, UserRoutes);
 
 router.get('/', isAuth, HomeController.index);
 router.get('/logout', isAuth, authController.logout);
