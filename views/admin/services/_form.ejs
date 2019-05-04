@@ -2,24 +2,34 @@
  <div class="box-body">
      <div class="form-group">
          <label for="name">العنوان بالعربيه</label>
-         <input type="text" name="name_ar" class="form-control" id="name_ar" placeholder="Enter name"
-             <% if(checkServiceExists) { %> value="<%=Service.name_ar ||null%>" <%}%>  >
+         <input type="text" name="name_ar" class="form-control" id="name_ar" <% if(checkServiceExists) { %>
+             value="<%=service.name_ar ||null%>" <%}%>  >
      </div>
      <div class="form-group">
          <label for="name">العنوان بالانجليزيه</label>
-         <input type="text" name="name_en" class="form-control" id="name_en" placeholder="Enter name"
-             <% if(checkServiceExists) { %> value="<%=Service.name_en ||null%>" <%}%>  >
+         <input type="text" name="name_en"  class="form-control" id="name_en" placeholder="Enter name"
+             <% if(checkServiceExists) { %> value="<%=service.name_en ||null%>" <%}%>  >
      </div>
      <div class="form-group">
          <label for="name">الوصف بالعربيه</label>
-         <input type="text" name="value_ar" class="form-control" id="value_ar" placeholder="Enter name"
-             <% if(checkServiceExists) { %> value="<%=Service.value_ar ||null%>" <%}%>  >
+
+         <textarea name="value_ar" id="value_ar" class="form-control">
+         
+         
+          <% if(checkServiceExists) { %> value="<%=service.value_ar ||null%>" <%}%>
+         </textarea>
+         
      </div>
      <div class="form-group">
          <label for="name">الوصف بالانجليزيه</label>
-         <input type="text" name="value_en" class="form-control" id="value_en" placeholder="Enter name"
-             <% if(checkServiceExists) { %> value="<%=Service.value_en ||null%>" <%}%>  >
-     </div>
+             <textarea name="value_en" id="value_en" class="form-control">
+         
+         
+          <% if(checkServiceExists) { %> value="<%=service.value_en ||null%>" <%}%>
+         </textarea>
+         
+         
+         </div>
 
 
   </div>

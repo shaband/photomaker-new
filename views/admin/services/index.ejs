@@ -12,22 +12,24 @@
                     <thead>
                         <tr>
                             <th> #</th>
-                            <th>الاسم</th>
-                            <th>البريد الالكترونى</th>
+                            <th> الاسم بالعربيه</th>
+                            <th> الاسم بالانجليزيه</th>
+                            <th> الوصف بالعربيه</th>
+                            <th> الوصف بالانجليزيه</th>
                             <th>الاعدادت</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0;i< users.length ;i++) {%>
+                        <% for(var i=0;i< services.length ;i++) {%>
                         <tr>
                             <td><%= i+1 %></td>
-                            <td><%=users[i].name%></td>
+                            <td><%-services[i].name_ar%></td>
+                            <td><%-services[i].name_en%></td>
+                            <td><%-services[i].value_ar%></td>
+                            <td><%-services[i].value_en%></td>
                             <td>
-                                <%=users[i].email%>
-                            </td>
-                            <td>
-                                <a href="/admin/users/<%= users[i].id %>/edit" class="btn btn-warning"> edit</a>
-                                <form action="/admin/users/<%= users[i].id %>?_method=delete " method="post">
+                                <a href="/admin/services/<%= services[i].id %>/edit" class="btn btn-warning"> edit</a>
+                                <form action="/admin/services/<%= services[i].id %>?_method=delete " method="post">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <button type="submit" class="btn btn-danger"> delete</button>
                                 </form>

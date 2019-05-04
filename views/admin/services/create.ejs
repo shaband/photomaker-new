@@ -6,11 +6,11 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">تعديل العضو <%= user.name %> </h3>
+                <h3 class="box-title">اضافه خدمه </h3>
             </div>
             <!-- form start -->
-            <form method="post" action="/admin/users/<%= user.id %>?_method=PUT">
-                <input type="hidden" name="_method" value="PUT">
+            <form method="post" action="/admin/services">
+
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <!-- /.box-body -->
                 <%-include('./_form.ejs')%>
@@ -22,14 +22,3 @@
         <!-- /.box -->
     </div>
 </div>
-
-<%- contentFor('scripts') %>
-<script>
-    CKEDITOR.replace('value_ar');
-    CKEDITOR.replace('value_en');
-</script>
-
-<script>
-    CKEDITOR.replace('value_ar');
-    CKEDITOR.replace('value_en');
-</script>

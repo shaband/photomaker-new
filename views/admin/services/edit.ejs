@@ -6,7 +6,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">تعديل العضو <%= user.name %> </h3>
+                <h3 class="box-title">تعديل خدمه <%= service.name_ar %> </h3>
             </div>
             <!-- form start -->
             <form method="post" action="/admin/users/<%= user.id %>?_method=PUT">
@@ -25,6 +25,6 @@
 
 <%- contentFor('scripts') %>
 <script>
-        CKEDITOR.replace('value_ar');
-        CKEDITOR.replace('value_en');
+    CKEDITOR.replace('value_ar');
+    CKEDITOR.replace('value_en');
 </script>

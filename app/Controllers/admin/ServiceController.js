@@ -15,9 +15,9 @@ class ServiceController {
     }
     store(req, res) {
 
-        let Service = new Service(req.body).save();
+        let service = new Service(req.body).save();
 
-        return Service.then(newService => {
+        return service.then(newService => {
 
             req.flash('success', 'تم الاضافه بنجاح');
 
@@ -28,18 +28,18 @@ class ServiceController {
     }
     edit(req, res) {
 
-        let Service = Service.findById(req.params.id)
-        return Service.then(Service => {
+        let servic = Service.findById(req.params.id)
+        return servic.then(Service => {
 
             return res.render('admin/services/edit', {
-                Service
+                service
             })
         }).catch(err => res.send(err));
 
     }
     update(req, res) {
-        let Service = Service.findByIdAndUpdate(req.params.id, req.body)
-        return Service.then(Service => {
+        let servic = Service.findByIdAndUpdate(req.params.id, req.body)
+        return servic.then(service => {
             req.flash('success', 'تم التعديل بنجاح')
             return res.redirect('/admin/services')
         }).catch(err => res.send(err))
@@ -48,9 +48,9 @@ class ServiceController {
     }
     destroy(req, res) {
 
-        let Service = Service.findByIdAndRemove(req.params.id)
+        let service = Service.findByIdAndRemove(req.params.id)
 
-        return Service.then(Service => {
+        return service.then(Service => {
             req.flash('success', 'تم الحذف بنجاح')
             return res.redirect('/admin/services')
         }).catch(err => res.send(err))
