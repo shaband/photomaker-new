@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node  -r dotenv/config ./bin/www",
-    "watch": "nodemon  -r dotenv/config ./bin/www"
+    "watch": "nodemon  -r dotenv/config ./bin/www",
+    "debug": "nodemon --inspect -r dotenv/config ./bin/www"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",

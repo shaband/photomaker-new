@@ -6,11 +6,11 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">اضافه العضو </h3>
+                <h3 class="box-title">الاعدادات</h3>
             </div>
             <!-- form start -->
-            <form method="post" action="/admin/users?_method=post">
-                <input type="hidden" name="_method" value="post">
+            <form method="post" action="/admin/settings/edit">
+                <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <!-- /.box-body -->
                 <%-include('./_form.ejs')%>

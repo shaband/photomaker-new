@@ -1,0 +1,46 @@
+<%- contentFor('content') %>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <div class="box-header">
+                <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example2" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th> #</th>
+                            <th> الاسم بالعربيه</th>
+                            <th> الاسم بالانجليزيه</th>
+                            <th> الوصف بالعربيه</th>
+                            <th> الوصف بالانجليزيه</th>
+                            <th>الاعدادت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0;i< services.length ;i++) {%>
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%-services[i].name_ar%></td>
+                            <td><%-services[i].name_en%></td>
+                            <td><%-services[i].value_ar%></td>
+                            <td><%-services[i].value_en%></td>
+                            <td>
+                                <a href="/admin/services/<%= services[i].id %>/edit" class="btn btn-warning"> edit</a>
+                                <form action="/admin/services/<%= services[i].id %>?_method=delete " method="post">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="btn btn-danger"> delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

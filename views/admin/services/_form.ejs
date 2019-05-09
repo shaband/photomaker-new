@@ -1,0 +1,35 @@
+ <% let checkServiceExists= (typeof Service !== 'undefined') %>
+ <div class="box-body">
+     <div class="form-group">
+         <label for="name">العنوان بالعربيه</label>
+         <input type="text" name="name_ar" class="form-control" id="name_ar" <% if(checkServiceExists) { %>
+             value="<%=service.name_ar ||null%>" <%}%>  >
+     </div>
+     <div class="form-group">
+         <label for="name">العنوان بالانجليزيه</label>
+         <input type="text" name="name_en"  class="form-control" id="name_en" placeholder="Enter name"
+             <% if(checkServiceExists) { %> value="<%=service.name_en ||null%>" <%}%>  >
+     </div>
+     <div class="form-group">
+         <label for="name">الوصف بالعربيه</label>
+
+         <textarea name="value_ar" id="value_ar" class="form-control">
+         
+         
+          <% if(checkServiceExists) { %> value="<%=service.value_ar ||null%>" <%}%>
+         </textarea>
+         
+     </div>
+     <div class="form-group">
+         <label for="name">الوصف بالانجليزيه</label>
+             <textarea name="value_en" id="value_en" class="form-control">
+         
+         
+          <% if(checkServiceExists) { %> value="<%=service.value_en ||null%>" <%}%>
+         </textarea>
+         
+         
+         </div>
+
+
+  </div>
