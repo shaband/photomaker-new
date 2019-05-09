@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const UserRoutes = require('@routes/admin/users');
+const UserRoutes = require('@root/routes/admin/routes/users');
 const {
     isAuth,
     isGuest

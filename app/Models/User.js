@@ -44,7 +44,7 @@ UserSchema.pre('save', function (next) {
     });
   });
 });
-/* UserSchema.pre('update', function (next) {
+UserSchema.pre('update', function (next) {
   var user = this;
   if (user.password) {
     // only hash the password if it has been modified (or is new)
@@ -70,8 +70,8 @@ UserSchema.pre('save', function (next) {
   next();
 
 });
- */
+
 UserSchema.methods.comparePassword = function (candidatePassword) {
-return  bcrypt.compareSync(candidatePassword, this.password);
+  return bcrypt.compareSync(candidatePassword, this.password);
 }
 module.exports = mongoose.model('User', UserSchema);

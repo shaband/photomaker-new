@@ -1,9 +1,9 @@
 const User = require('@models/User');
-
+const bcrypt = require('bcrypt');
 class UserController {
 
     index(req, res) {
-   //     console.log(req);
+        //     console.log(req);
         const users = User.find()
         users.then(users => {
 
@@ -51,16 +51,22 @@ class UserController {
         if (req.body.password.trim() == null || req.body.password.trim() == "") {
             delete req.body.password;
             delete req.body.confirmPassword;
+        } else {
+            let hashPassword = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+            // console.log(hashPassword);
+            req.body.password = hashPassword
+            console.log(req.body);
+
         }
 
-        let user = User.findByIdAndUpdate(req.params.id, req.body)
+        /*  let user = User.findByIdAndUpdate(req.params.id, req.body)
         return user.then(user => {
 
             req.flash('success', 'تم التعديل بنجاح')
 
             return res.redirect('/admin/users')
         }).catch(err => res.send(err))
-
+ */
 
         //   res.render('admin/users/create')
 
